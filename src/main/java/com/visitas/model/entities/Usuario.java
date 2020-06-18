@@ -16,21 +16,19 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
-	private String clave;
+	private String password;
 
 	private String email;
-
-	private String usuario;
+	
+	private String username;
 
 	//bi-directional many-to-one association to Empresa
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name="empresa")
-	private Empresa empresaBean;
+	private Empresa empresa;
 
 	//bi-directional many-to-one association to Rol
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name="rol")
-	private Rol rolBean;
+	private Rol rol;
 
 	public Usuario() {
 	}
@@ -44,11 +42,11 @@ public class Usuario implements Serializable {
 	}
 
 	public String getClave() {
-		return this.clave;
+		return this.password;
 	}
 
 	public void setClave(String clave) {
-		this.clave = clave;
+		this.password = clave;
 	}
 
 	public String getEmail() {
@@ -60,27 +58,27 @@ public class Usuario implements Serializable {
 	}
 
 	public String getUsuario() {
-		return this.usuario;
+		return this.username;
 	}
 
 	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+		this.username = usuario;
 	}
 
 	public Empresa getEmpresaBean() {
-		return this.empresaBean;
+		return this.empresa;
 	}
 
 	public void setEmpresaBean(Empresa empresaBean) {
-		this.empresaBean = empresaBean;
+		this.empresa = empresaBean;
 	}
 
 	public Rol getRol() {
-		return this.rolBean;
+		return this.rol;
 	}
 
 	public void setRol(Rol rolBean) {
-		this.rolBean = rolBean;
+		this.rol = rolBean;
 	}
 
 }

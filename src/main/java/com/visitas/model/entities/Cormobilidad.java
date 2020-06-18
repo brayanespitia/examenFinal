@@ -38,8 +38,7 @@ public class Cormobilidad implements Serializable {
 	private byte vih;
 
 	//bi-directional one-to-one association to Basico
-	@OneToOne
-	@Column(name="id")
+	@OneToOne	
 	private Basico basico;
 
 	public Cormobilidad() {

@@ -20,13 +20,12 @@ public class Tipo implements Serializable {
 	private String descripcion;
 
 	//bi-directional many-to-one association to Basico
-	@OneToMany(mappedBy="tipoBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="tipo",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Basico> basicos;
 
 	//bi-directional many-to-one association to Empresa
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name="empresa")
-	private Empresa empresaBean;
+	private Empresa empresa;
 
 	public Tipo() {
 	}
@@ -70,11 +69,11 @@ public class Tipo implements Serializable {
 	}
 
 	public Empresa getEmpresaBean() {
-		return this.empresaBean;
+		return this.empresa;
 	}
 
 	public void setEmpresaBean(Empresa empresaBean) {
-		this.empresaBean = empresaBean;
+		this.empresa = empresaBean;
 	}
 
 }

@@ -42,13 +42,12 @@ public class Registro implements Serializable {
 	private byte tos;
 
 	//bi-directional many-to-one association to Acceso
-	@OneToMany(mappedBy="registroBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="registro",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Acceso> accesos;
 
 	//bi-directional many-to-one association to Basico
-	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name="persona")
-	private Basico basico;
+	@ManyToOne(fetch = FetchType.LAZY)	
+	private Basico persona;
 
 	public Registro() {
 	}
@@ -164,11 +163,11 @@ public class Registro implements Serializable {
 	}
 
 	public Basico getBasico() {
-		return this.basico;
+		return this.persona;
 	}
 
 	public void setBasico(Basico basico) {
-		this.basico = basico;
+		this.persona = basico;
 	}
 
 }

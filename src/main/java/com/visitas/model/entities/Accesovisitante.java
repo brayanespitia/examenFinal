@@ -23,9 +23,8 @@ public class AccesoVisitante implements Serializable {
 	private int temperatura;
 
 	//bi-directional many-to-one association to Visitante
-	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name="visitante")
-	private Visitante visitanteBean;
+	@ManyToOne(fetch = FetchType.LAZY)	
+	private Visitante visitante;
 
 	public AccesoVisitante() {
 	}
@@ -55,11 +54,11 @@ public class AccesoVisitante implements Serializable {
 	}
 
 	public Visitante getVisitante() {
-		return this.visitanteBean;
+		return this.visitante;
 	}
 
 	public void setVisitante(Visitante visitanteBean) {
-		this.visitanteBean = visitanteBean;
+		this.visitante = visitanteBean;
 	}
 
 }

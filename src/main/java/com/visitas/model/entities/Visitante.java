@@ -30,13 +30,12 @@ public class Visitante implements Serializable {
 	private String nombre;
 
 	//bi-directional many-to-one association to Accesovisitante
-	@OneToMany(mappedBy="visitanteBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="visitante",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<AccesoVisitante> accesovisitantes;
 
 	//bi-directional many-to-one association to Empresa
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name="empresa")
-	private Empresa empresaBean;
+	private Empresa empresa;
 
 	public Visitante() {
 	}
@@ -112,11 +111,11 @@ public class Visitante implements Serializable {
 	}
 
 	public Empresa getEmpresaBean() {
-		return this.empresaBean;
+		return this.empresa;
 	}
 
 	public void setEmpresaBean(Empresa empresaBean) {
-		this.empresaBean = empresaBean;
+		this.empresa = empresaBean;
 	}
 
 }
