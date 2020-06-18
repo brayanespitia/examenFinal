@@ -30,12 +30,12 @@ public class Visitante implements Serializable {
 	private String nombre;
 
 	//bi-directional many-to-one association to Accesovisitante
-	@OneToMany(mappedBy="visitanteBean")
-	private List<Accesovisitante> accesovisitantes;
+	@OneToMany(mappedBy="visitanteBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<AccesoVisitante> accesovisitantes;
 
 	//bi-directional many-to-one association to Empresa
-	@ManyToOne
-	@JoinColumn(name="empresa")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="empresa")
 	private Empresa empresaBean;
 
 	public Visitante() {
@@ -89,24 +89,24 @@ public class Visitante implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public List<Accesovisitante> getAccesovisitantes() {
+	public List<AccesoVisitante> getAccesovisitantes() {
 		return this.accesovisitantes;
 	}
 
-	public void setAccesovisitantes(List<Accesovisitante> accesovisitantes) {
+	public void setAccesovisitantes(List<AccesoVisitante> accesovisitantes) {
 		this.accesovisitantes = accesovisitantes;
 	}
 
-	public Accesovisitante addAccesovisitante(Accesovisitante accesovisitante) {
+	public AccesoVisitante addAccesovisitante(AccesoVisitante accesovisitante) {
 		getAccesovisitantes().add(accesovisitante);
-		accesovisitante.setVisitanteBean(this);
+		accesovisitante.setVisitante(this);
 
 		return accesovisitante;
 	}
 
-	public Accesovisitante removeAccesovisitante(Accesovisitante accesovisitante) {
+	public AccesoVisitante removeAccesovisitante(AccesoVisitante accesovisitante) {
 		getAccesovisitantes().remove(accesovisitante);
-		accesovisitante.setVisitanteBean(null);
+		accesovisitante.setVisitante(null);
 
 		return accesovisitante;
 	}

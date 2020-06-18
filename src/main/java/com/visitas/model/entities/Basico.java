@@ -45,18 +45,18 @@ public class Basico implements Serializable {
 	private String telefono;
 
 	//bi-directional many-to-one association to Ep
-	@ManyToOne
-	@JoinColumn(name="eps")
-	private Eps ep;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="eps")
+	private Eps eps;
 
 	//bi-directional many-to-one association to Modalidad
-	@ManyToOne
-	@JoinColumn(name="modalidad")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="modalidad")
 	private Modalidad modalidadBean;
 
 	//bi-directional many-to-one association to Tipo
-	@ManyToOne
-	@JoinColumn(name="tipo")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="tipo")
 	private Tipo tipoBean;
 
 	//bi-directional one-to-one association to Cormobilidad
@@ -64,7 +64,7 @@ public class Basico implements Serializable {
 	private Cormobilidad cormobilidad;
 
 	//bi-directional many-to-one association to Registro
-	@OneToMany(mappedBy="basico")
+	@OneToMany(mappedBy="basico",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Registro> registros;
 
 	public Basico() {
@@ -174,12 +174,12 @@ public class Basico implements Serializable {
 		this.telefono = telefono;
 	}
 
-	public Eps getEp() {
-		return this.ep;
+	public Eps getEps() {
+		return this.eps;
 	}
 
-	public void setEp(Eps ep) {
-		this.ep = ep;
+	public void setEps(Eps eps) {
+		this.eps = eps;
 	}
 
 	public Modalidad getModalidadBean() {

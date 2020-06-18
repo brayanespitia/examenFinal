@@ -20,7 +20,7 @@ public class Modalidad implements Serializable {
 	private String descripcion;
 
 	//bi-directional many-to-one association to Basico
-	@OneToMany(mappedBy="modalidadBean")
+	@OneToMany(mappedBy="modalidadBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Basico> basicos;
 
 	public Modalidad() {

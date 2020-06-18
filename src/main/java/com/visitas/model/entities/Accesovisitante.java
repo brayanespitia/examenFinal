@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="accesovisitante")
-public class Accesovisitante implements Serializable {
+public class AccesoVisitante implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,11 +23,11 @@ public class Accesovisitante implements Serializable {
 	private int temperatura;
 
 	//bi-directional many-to-one association to Visitante
-	@ManyToOne
-	@JoinColumn(name="visitante")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="visitante")
 	private Visitante visitanteBean;
 
-	public Accesovisitante() {
+	public AccesoVisitante() {
 	}
 
 	public int getId() {
@@ -54,11 +54,11 @@ public class Accesovisitante implements Serializable {
 		this.temperatura = temperatura;
 	}
 
-	public Visitante getVisitanteBean() {
+	public Visitante getVisitante() {
 		return this.visitanteBean;
 	}
 
-	public void setVisitanteBean(Visitante visitanteBean) {
+	public void setVisitante(Visitante visitanteBean) {
 		this.visitanteBean = visitanteBean;
 	}
 

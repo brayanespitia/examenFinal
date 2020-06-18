@@ -22,8 +22,8 @@ public class Acceso implements Serializable {
 	private Timestamp fechareg;
 
 	//bi-directional many-to-one association to Registro
-	@ManyToOne
-	@JoinColumn(name="registro")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="registro")
 	private Registro registroBean;
 
 	public Acceso() {
@@ -53,11 +53,11 @@ public class Acceso implements Serializable {
 		this.fechareg = fechareg;
 	}
 
-	public Registro getRegistroBean() {
+	public Registro getRegistro() {
 		return this.registroBean;
 	}
 
-	public void setRegistroBean(Registro registroBean) {
+	public void setRegistro(Registro registroBean) {
 		this.registroBean = registroBean;
 	}
 

@@ -23,13 +23,13 @@ public class Usuario implements Serializable {
 	private String usuario;
 
 	//bi-directional many-to-one association to Empresa
-	@ManyToOne
-	@JoinColumn(name="empresa")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="empresa")
 	private Empresa empresaBean;
 
 	//bi-directional many-to-one association to Rol
-	@ManyToOne
-	@JoinColumn(name="rol")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="rol")
 	private Rol rolBean;
 
 	public Usuario() {
@@ -75,11 +75,11 @@ public class Usuario implements Serializable {
 		this.empresaBean = empresaBean;
 	}
 
-	public Rol getRolBean() {
+	public Rol getRol() {
 		return this.rolBean;
 	}
 
-	public void setRolBean(Rol rolBean) {
+	public void setRol(Rol rolBean) {
 		this.rolBean = rolBean;
 	}
 

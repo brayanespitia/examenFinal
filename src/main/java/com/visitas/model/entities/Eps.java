@@ -20,7 +20,7 @@ public class Eps implements Serializable {
 	private String descripcion;
 
 	//bi-directional many-to-one association to Basico
-	@OneToMany(mappedBy="ep")
+	@OneToMany(mappedBy="eps",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Basico> basicos;
 
 	public Eps() {
@@ -52,14 +52,14 @@ public class Eps implements Serializable {
 
 	public Basico addBasico(Basico basico) {
 		getBasicos().add(basico);
-		basico.setEp(this);
+		basico.setEps(this);
 
 		return basico;
 	}
 
 	public Basico removeBasico(Basico basico) {
 		getBasicos().remove(basico);
-		basico.setEp(null);
+		basico.setEps(null);
 
 		return basico;
 	}

@@ -26,15 +26,15 @@ public class Empresa implements Serializable {
 	private String nombre;
 
 	//bi-directional many-to-one association to Tipo
-	@OneToMany(mappedBy="empresaBean")
+	@OneToMany(mappedBy="empresaBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Tipo> tipos;
 
 	//bi-directional many-to-one association to Usuario
-	@OneToMany(mappedBy="empresaBean")
+	@OneToMany(mappedBy="empresaBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Usuario> usuarios;
 
 	//bi-directional many-to-one association to Visitante
-	@OneToMany(mappedBy="empresaBean")
+	@OneToMany(mappedBy="empresaBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Visitante> visitantes;
 
 	public Empresa() {

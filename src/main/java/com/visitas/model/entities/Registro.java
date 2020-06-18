@@ -42,12 +42,12 @@ public class Registro implements Serializable {
 	private byte tos;
 
 	//bi-directional many-to-one association to Acceso
-	@OneToMany(mappedBy="registroBean")
+	@OneToMany(mappedBy="registroBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Acceso> accesos;
 
 	//bi-directional many-to-one association to Basico
-	@ManyToOne
-	@JoinColumn(name="persona")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="persona")
 	private Basico basico;
 
 	public Registro() {
@@ -151,14 +151,14 @@ public class Registro implements Serializable {
 
 	public Acceso addAcceso(Acceso acceso) {
 		getAccesos().add(acceso);
-		acceso.setRegistroBean(this);
+		acceso.setRegistro(this);
 
 		return acceso;
 	}
 
 	public Acceso removeAcceso(Acceso acceso) {
 		getAccesos().remove(acceso);
-		acceso.setRegistroBean(null);
+		acceso.setRegistro(null);
 
 		return acceso;
 	}

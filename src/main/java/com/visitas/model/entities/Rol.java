@@ -20,7 +20,7 @@ public class Rol implements Serializable {
 	private String descripcion;
 
 	//bi-directional many-to-one association to Usuario
-	@OneToMany(mappedBy="rolBean")
+	@OneToMany(mappedBy="rolBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Usuario> usuarios;
 
 	public Rol() {
@@ -52,14 +52,14 @@ public class Rol implements Serializable {
 
 	public Usuario addUsuario(Usuario usuario) {
 		getUsuarios().add(usuario);
-		usuario.setRolBean(this);
+		usuario.setRol(this);
 
 		return usuario;
 	}
 
 	public Usuario removeUsuario(Usuario usuario) {
 		getUsuarios().remove(usuario);
-		usuario.setRolBean(null);
+		usuario.setRol(null);
 
 		return usuario;
 	}

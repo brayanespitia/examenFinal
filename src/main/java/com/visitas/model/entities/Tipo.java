@@ -20,12 +20,12 @@ public class Tipo implements Serializable {
 	private String descripcion;
 
 	//bi-directional many-to-one association to Basico
-	@OneToMany(mappedBy="tipoBean")
+	@OneToMany(mappedBy="tipoBean",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Basico> basicos;
 
 	//bi-directional many-to-one association to Empresa
-	@ManyToOne
-	@JoinColumn(name="empresa")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name="empresa")
 	private Empresa empresaBean;
 
 	public Tipo() {

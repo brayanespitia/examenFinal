@@ -39,7 +39,7 @@ public class Cormobilidad implements Serializable {
 
 	//bi-directional one-to-one association to Basico
 	@OneToOne
-	@JoinColumn(name="id")
+	@Column(name="id")
 	private Basico basico;
 
 	public Cormobilidad() {
